@@ -97,7 +97,7 @@
                         </div>
                         <div class="stat">
                             <span class="stat-number">2023/2025</span>
-                            <span class="stat-label">training in digital development</span>
+                            <span class="stat-label">Web Developer</span>
                         </div>
                     </div>
                 </div>
@@ -374,21 +374,21 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form>
-                        <div class="form-group">
-                            <input type="text" id="name" class="form-input" placeholder=" " required>
-                            <label for="name" class="form-label">Name</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" class="form-input" placeholder=" " required>
-                            <label for="email" class="form-label">Email</label>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" class="form-input form-textarea" placeholder=" " required></textarea>
-                            <label for="message" class="form-label">Message</label>
-                        </div>
-                        <button type="submit" class="btn primary-btn form-submit">Send Message</button>
-                    </form>
+                    <form id="contact-form">
+    <div class="form-group">
+        <input type="text" name="from_name" id="name" class="form-input" placeholder=" " required>
+        <label for="name" class="form-label">Name</label>
+    </div>
+    <div class="form-group">
+        <input type="email" name="reply_to" id="email" class="form-input" placeholder=" " required>
+        <label for="email" class="form-label">Email</label>
+    </div>
+    <div class="form-group">
+        <textarea name="message" id="message" class="form-input form-textarea" placeholder=" " required></textarea>
+        <label for="message" class="form-label">Message</label>
+    </div>
+    <button type="submit" class="btn primary-btn form-submit">Send Message</button>
+</form>
                 </div>
             </div>
         </section>
@@ -481,5 +481,32 @@
             window.addEventListener('scroll', animateOnScroll);
         });
     </script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
+<script>
+  (function(){
+    emailjs.init("dPPvwrBuYQZiybyqT"); // Replace with your EmailJS Public Key
+  })();
+
+
+
+
+
+
+
+  // EmailJS Form Handling
+document.getElementById("contact-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    emailjs.sendForm("service_tao9nj4", "template_yeqmve7", this)
+        .then(function() {
+            alert("Message sent successfully!");
+        }, function(error) {
+            alert("Failed to send message. Please try again.");
+            console.error(error);
+        });
+});
+</script>
 </body>
 </html>
